@@ -22,8 +22,8 @@ const int SpeedGauge  = 13;
 
 // timing
 const unsigned long second      = 1000000;  // microseconds
-const int RPM_update_interval = 0.003 * second; // microseconds
-unsigned long TempInterval = 5*second; // microseconds
+const int RPM_update_interval = 0.003 * second;
+unsigned long TempInterval = 5*second;
 unsigned long tone_interval = 0.025 * second;
 unsigned long gear_interval = 1 * second;
 unsigned long RPMinterval;
@@ -83,7 +83,7 @@ boolean Push;
 boolean Alarm;
 
 boolean Blink;
-unsigned long BlinkTime = 0.5 * second; //microseconds
+unsigned long BlinkTime = 0.5 * second;
 unsigned long previous_time_blink = 0;
 
 // the setup routine runs once when you press reset:
@@ -94,7 +94,6 @@ void setup()  {
   pinMode(BlinkR,     OUTPUT);      
   pinMode(BlinkL,     OUTPUT);
   pinMode(TempGauge,  OUTPUT);
-  pinMode(FuelGauge,  OUTPUT);
   pinMode(EcoGauge,   OUTPUT);
   pinMode(HighBeam,   OUTPUT);
   pinMode(SpeedGauge, OUTPUT);
