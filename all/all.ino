@@ -23,7 +23,7 @@ const int SpeedGauge  = 13;
 // timing
 const unsigned long second      = 1000000;  // microseconds
 const int RPM_update_interval = 0.003 * second;
-unsigned long TempInterval = 5*second;
+unsigned long TempInterval = 0.5*second;
 unsigned long tone_interval = 0.025 * second;
 unsigned long gear_interval = 1 * second;
 unsigned long RPMinterval;
@@ -31,7 +31,7 @@ unsigned long Speedinterval;
 unsigned long SensorInterval = 0.1 * second;
 
 
-const int GasMax      = 750.0;
+const int GasMax      = 700.0;
 
 float Fuel = 162.0;        // Fuel content of the tank
 boolean Fuelempty = 0;
@@ -286,19 +286,19 @@ void loop()  {
     // 5 is minimum PWM for valid display
     previous_time_temp = current_time;
     
-    // warm-up time: first 200 seconds we go from 155 to 55
-    if (current_time < 200*second && Temp > 55)
+    // warm-up time: first 200 seconds we go from 155 to 35
+    if (current_time < 200*second && Temp > 35)
     {
       Temp = Temp - 1;
     }
     
     // afterwards, we increase for high RPM and decrease for low RPM
-    // but we don't go below 55
+    // but we don't go below 35
     if (current_time > 200*second && RPM > 4000)
     {
       Temp = Temp - RPM / 3000;
     }
-    if (current_time > 200*second && RPM < 4000 && Temp < 55)
+    if (current_time > 200*second && RPM < 4000 && Temp < 35)
     {
       Temp = Temp + 1;
     }
