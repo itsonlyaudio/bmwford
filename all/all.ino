@@ -31,7 +31,7 @@ unsigned long Speedinterval;
 unsigned long SensorInterval = 0.1 * second;
 
 
-const int GasMax      = 700.0;
+const int GasMax      = 675.0;
 
 float Fuel = 162.0;        // Fuel content of the tank
 boolean Fuelempty = 0;
@@ -310,11 +310,11 @@ void loop()  {
     // so we'll do that in this timing cycle as well.
     if(GasPedal > 0.1)
     {
-      Fuel = Fuel - GasPedal / 2.0;
+      Fuel = Fuel - GasPedal / 10.0;
     }
     else
     {
-      Fuel = Fuel - 0.1 / 2.0;
+      Fuel = Fuel - 0.1 / 10.0;
     }
     //Serial.println(Fuel);
     
